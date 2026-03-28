@@ -1,0 +1,5 @@
+1. `int contador = 10;`
+2. `float precio = 99.99;`
+3. `string mensaje = "Hola mundo";`
+4. `bool estado = true;`
+5. `var total = contador + 5;`
