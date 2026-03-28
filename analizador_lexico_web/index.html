@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Analizador Léxico (Web) – JS</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230b5cff'/><text x='50' y='58' font-size='56' text-anchor='middle' fill='white' font-family='Segoe UI, Arial'>Lx</text></svg>">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<header class="app-header">
+  <h1>Analizador Léxico <span class="muted"></span></h1>
+  <div class="actions">
+    <button id="btn-theme" class="btn btn-secondary" title="Cambiar tema">🌓</button>
+    <a class="btn btn-primary" href="https://code.visualstudio.com/" target="_blank" rel="noreferrer">VS Code</a>
+  </div>
+</header>
+
+<main class="container">
+  <section class="panel">
+    <h2>Entrada</h2>
+    <div class="controls">
+      <div class="group">
+        <label for="file-input" class="btn">📄 Cargar archivo…</label>
+        <input id="file-input" type="file" accept=".txt,.src,.code,.js,.c,.cpp,.java,.py,.ts,.json,.md,.html,.css" />
+        <button id="btn-sample" class="btn btn-secondary">Ejemplo</button>
+      </div>
+      <div class="group">
+        <label class="switch">
+          <input type="checkbox" id="opt-comments" checked />
+          <span>Incluir comentarios</span>
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="opt-newlines" />
+          <span>Emitir NEWLINE</span>
+        </label>
+      </div>
+      <div class="group wrap">
+        <label>Palabras clave (separadas por coma):</label>
+        <input id="keywords" type="text" value="if,else,while,for,return,var,function,true,false,null,int,float,string,bool,break,continue,class,def,and,or,not" />
+      </div>
+      <div class="group">
+        <button id="btn-tokenize" class="btn btn-primary">Tokenizar</button>
+        <button id="btn-clear" class="btn btn-outline">Limpiar</button>
+      </div>
+    </div>
+    <textarea id="source" spellcheck="false" placeholder="Pega tu código aquí…"></textarea>
+  </section>
+
+  <section class="panel">
+    <h2>Salida</h2>
+    <div class="controls">
+      <div class="group">
+        <button id="btn-json" class="btn">📥 Descargar JSON</button>
+        <button id="btn-csv" class="btn">📥 Descargar CSV</button>
+        <button id="btn-copy" class="btn btn-secondary">📋 Copiar JSON</button>
+      </div>
+      <div class="group">
+        <span id="status" class="status"></span>
+      </div>
+    </div>
+
+    <div class="output-grid">
+      <div class="output-box">
+        <h3>Tabla</h3>
+        <div class="table-wrapper">
+          <table id="table">
+            <thead>
+              <tr><th>#</th><th>Tipo</th><th>Valor</th><th>Línea</th><th>Columna</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="output-box">
+        <h3>JSON</h3>
+        <pre id="json" class="code"></pre>
+      </div>
+    </div>
+  </section>
+  
+</main>
+
+<footer class="app-footer">Hecho por Moises Miranda, Juan almengor y Hoselyta Bravo <code>curso_de_compiladores</code>.</footer>
+
+<script src="assets/js/lexer.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
